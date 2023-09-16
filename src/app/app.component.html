@@ -1,17 +1,34 @@
-<div class="container">
+<div class="search" *ngIf="weatherData">
+  <form #form="ngForm" (submit)="(onSubmit)">
+    <input
+      type="text"
+      placeholder="Поиск города"
+      name="city"
+      [(ngModel)]="cityName"
+    />
+  </form>
+</div>
+
+<div class="container" *ngIf="weatherData; else noInformation">
   <div class="upper-data">
-    <img src="../assets/hot-weather.jpg" alt="Жаркая погода" *ngIf="14 > 15" />
+    <img
+      src="../assets/hot-weather.jpg"
+      alt="Жаркая погода"
+      *ngIf="weatherData.main.temp > 15"
+    />
     <img
       src="../assets/cold-weather.jpeg"
       alt="Холодная погода"
-      *ngIf="14 <= 15"
+      *ngIf="weatherData.main.temp <= 15"
     />
 
     <div class="upper-data__weather-data">
-      <div class="upper-data__weather-data-location">Москва</div>
+      <div class="upper-data__weather-data-location">
+        {{ weatherData.name }}
+      </div>
 
       <div class="upper-data__weather-data-temperature">
-        {{ 14.4 | number : "1.0-0" }}°C
+        {{ weatherData.main.temp | number : "1.0-0" }}°C
       </div>
     </div>
   </div>
@@ -21,7 +38,7 @@
       <span class="lower-data__information-label"> Больше Информации </span>
 
       <div class="lower-data__information-container">
-        <!-- Первый блок -->
+        <!-- Первый блок (мин. температура) -->
         <div class="lower-data__information-container_info-block">
           <div class="lower-data__information-container_info-block_label">
             <img src="../assets/min.png" alt="Температура" />
@@ -29,11 +46,11 @@
           </div>
 
           <div class="lower-data__information-container_info-block_value">
-            10°C
+            {{ weatherData.main.temp_min | number : "1.0-0" }}°C
           </div>
         </div>
 
-        <!-- Второй блок -->
+        <!-- Второй блок (макс. температура) -->
         <div class="lower-data__information-container_info-block">
           <div class="lower-data__information-container_info-block_label">
             <img src="../assets/max.png" alt="Температура" />
@@ -41,11 +58,11 @@
           </div>
 
           <div class="lower-data__information-container_info-block_value">
-            20°C
+            {{ weatherData.main.temp_max | number : "1.0-0" }}°C
           </div>
         </div>
 
-        <!-- Третий блок -->
+        <!-- Третий блок (влажность) -->
         <div class="lower-data__information-container_info-block">
           <div class="lower-data__information-container_info-block_label">
             <img src="../assets/humidity.png" alt="Температура" />
@@ -53,11 +70,11 @@
           </div>
 
           <div class="lower-data__information-container_info-block_value">
-            77%
+            {{ weatherData.main.humidity }}%
           </div>
         </div>
 
-        <!-- Четвёртый блок -->
+        <!-- Четвёртый блок (ветер) -->
         <div class="lower-data__information-container_info-block">
           <div class="lower-data__information-container_info-block_label">
             <img src="../assets/wind.png" alt="Температура" />
@@ -65,12 +82,16 @@
           </div>
 
           <div class="lower-data__information-container_info-block_value">
-            11 км/ч
+            {{ weatherData.wind.speed }} км/ч
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #noInformation>
+  <h1 class="no-information-label">Данные с сервера не были получены...</h1>
+</ng-template>
 
 <router-outlet></router-outlet>
