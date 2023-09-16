@@ -1,2 +1,76 @@
-<div>Hello World!</div>
+<div class="container">
+  <div class="upper-data">
+    <img src="../assets/hot-weather.jpg" alt="Жаркая погода" *ngIf="14 > 15" />
+    <img
+      src="../assets/cold-weather.jpeg"
+      alt="Холодная погода"
+      *ngIf="14 <= 15"
+    />
+
+    <div class="upper-data__weather-data">
+      <div class="upper-data__weather-data-location">Москва</div>
+
+      <div class="upper-data__weather-data-temperature">
+        {{ 14.4 | number : "1.0-0" }}°C
+      </div>
+    </div>
+  </div>
+
+  <div class="lower-data">
+    <div class="lower-data__information">
+      <span class="lower-data__information-label"> Больше Информации </span>
+
+      <div class="lower-data__information-container">
+        <!-- Первый блок -->
+        <div class="lower-data__information-container_info-block">
+          <div class="lower-data__information-container_info-block_label">
+            <img src="../assets/min.png" alt="Температура" />
+            <span>Мин.</span>
+          </div>
+
+          <div class="lower-data__information-container_info-block_value">
+            10°C
+          </div>
+        </div>
+
+        <!-- Второй блок -->
+        <div class="lower-data__information-container_info-block">
+          <div class="lower-data__information-container_info-block_label">
+            <img src="../assets/max.png" alt="Температура" />
+            <span>Макс.</span>
+          </div>
+
+          <div class="lower-data__information-container_info-block_value">
+            20°C
+          </div>
+        </div>
+
+        <!-- Третий блок -->
+        <div class="lower-data__information-container_info-block">
+          <div class="lower-data__information-container_info-block_label">
+            <img src="../assets/humidity.png" alt="Температура" />
+            <span>Влажность</span>
+          </div>
+
+          <div class="lower-data__information-container_info-block_value">
+            77%
+          </div>
+        </div>
+
+        <!-- Четвёртый блок -->
+        <div class="lower-data__information-container_info-block">
+          <div class="lower-data__information-container_info-block_label">
+            <img src="../assets/wind.png" alt="Температура" />
+            <span>Ветер</span>
+          </div>
+
+          <div class="lower-data__information-container_info-block_value">
+            11 км/ч
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>

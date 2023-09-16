@@ -1,0 +1,117 @@
+// Стили для App
+.container {
+  width: 400px;
+  height: 80vh;
+  background-color: var(--blue-2);
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px var(--shadow-dark);
+
+  .upper-data {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__weather-data {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: var(--shadow-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &-location,
+      &-temperature {
+        color: var(--white);
+        text-align: center;
+      }
+
+      &-location {
+        font-size: 18px;
+      }
+
+      &-temperature {
+        font-size: 64px;
+        font-weight: 900;
+      }
+    }
+  }
+
+  .lower-data {
+    &__information {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &-label {
+        color: var(--white);
+      }
+
+      &-container {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        row-gap: 20px;
+        flex-wrap: wrap;
+        background-color: var(--shadow-dark);
+        padding: 16px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        margin-top: 16px;
+
+        &_info-block {
+          width: 50%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          &_label {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            img {
+              width: 24px;
+              margin-bottom: 6px;
+            }
+
+            span {
+              color: var(--white);
+              font-size: 12px;
+            }
+          }
+
+          &_value {
+            width: 50%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: var(--white);
+          }
+        }
+      }
+    }
+  }
+}
